@@ -1,0 +1,14 @@
+#summary About page for metaqc
+
+= Introduction =
+
+metaqc offers a method for tracking the performance of Gas Chromatography-Mass Spectrometry (GC-MS) instruments by using a defined instrument Quality Control (iQC) sample to identify the change in peak area and intensity of compounds over time, and produce a report indicating those items which are diagnostic of instrument condition.
+
+
+= Requirements =
+
+  * *PyMS* -- Peak identification, integration
+  * *pdf2latex* -- Report creation
+  * *sqlite3* -- Database management
+
+_Note that PyMS has its own dependencies, and as such these are inherited by metaqc._

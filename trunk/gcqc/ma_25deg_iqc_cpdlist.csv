@@ -1,0 +1,55 @@
+Name,RT,MST1
+Alanine 2TMS,6.9,190
+Glycine 2TMS,7.031,204
+Valine 2TMS,7.557,144
+"13C,15N-Valine",7.557,149
+Serine 2TMS,7.806,116
+Leucine 2TMS,7.868,158
+Isoleucine 2TMS,8.006,158
+Threonine 2TMS,8.015,117
+Proline 1TMS,8.068,142
+Glycine 3TMS,8.095,248
+Succinate 2TMS,8.112,247
+Norleucine 2TMS,8.134,158
+Serine 3TMS,8.334,204
+Threonine 3TMS,8.474,218
+Aspartate 2TMS,9.176,245
+Methionine 2TMS,9.232,293
+Pyroglutamate 2TMS,9.268,156
+Cysteine 3TMS,9.3823,294
+Phenylalanine,9.458,120
+Glutamate 3TMS,9.663,246
+Phenylalanine 2TMS,9.778,192
+Ribose,9.886,307
+Asparagine 3TMS,9.92,188
+Ribitol,10.092,319
+Fucose MX1,10.1374,117
+Fucose MX2,10.2099,117
+Putrescine 4TMS,10.261,214
+Isocitric acid,10.542,245
+Citric acid,10.543,183
+Ornithine,10.571,142
+Fructose MX1,10.737,307
+Lysine 3TMS pk2,10.767,258
+Fructose MX2,10.778,307
+Glucose MX1,10.857,319
+Tyrosine 2TMS,10.939,179
+Glucose MX2,10.954,319
+Mannitol,10.99,319
+Lysine 4TMS,11.007,174
+13C Sorbitol,11.007,323
+Histidine,11.06,154
+Tyrosine 3TMS,11.106,280
+Myoinositol 6TMS,11.658,305
+Ribose-5-phosphate MX1,11.668,357
+Ribose-5-phosphate MX2,11.695,357
+Tryptophan 2TMS,12.176,231
+Tryptophan 3TMS,12.2,305
+Fructose-6-Phosphate,12.383,217
+Cysteine 4TMS,12.408,411
+Glucose-6-Phosphate MX1,12.435,299
+Glucose-6-Phosphate MX2,12.515,299
+Trehalose 8TMS,13.774,361
+Lanosterol,16.6592,498
+Maltotriose MX1,17.333,361
+Maltotriose MX2,17.602,361

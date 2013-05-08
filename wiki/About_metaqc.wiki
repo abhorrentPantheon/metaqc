@@ -2,7 +2,7 @@
 
 = Introduction =
 
-metaqc offers a method for tracking the performance of Gas Chromatography-Mass Spectrometry (GC-MS) instruments by using a defined instrument Quality Control (iQC) sample to identify the change in peak area and intensity of compounds over time, and produce a report indicating those items which are diagnostic of instrument condition.
+metaqc offers a method for tracking the performance of Gas Chromatography-Mass Spectrometry (GC-MS) instruments by using a defined instrument Quality Control sample ([iQC_mix iQC mix]) to identify the change in peak area and intensity of compounds over time, and produce a report indicating those items which are diagnostic of instrument condition.
 
 
 = Requirements =

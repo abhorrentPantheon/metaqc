@@ -1,0 +1,17 @@
+#summary The picker module of metaqc
+
+= Introduction =
+
+This module manages the [gcqc] and [mailer] modules, calling them when necessary to process a file.
+
+
+= Process =
+
+  * Read in settings from configuration file
+  * Check database for files that have been processed
+  * Parse the file tree to list all .CDF files that are present
+  * Call the [gcqc] module for any unprocessed files
+  * Either:
+    * update the database, or
+    * email the error log to the maintainer(s)
+  

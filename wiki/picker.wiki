@@ -7,7 +7,11 @@ This module manages the [gcqc] and [mailer] modules, calling them when necessary
 
 = Process =
 
-  * Read in settings from configuration file
+  * Settings read from configuration file:
+    * Instrument data folder(s)
+    * Report folder location
+    * Database name
+    * Mail settings
   * Check database for files that have been processed
   * Parse the file tree to list all .CDF files that are present
   * Call the [gcqc] module for any unprocessed files (produces .tex report)

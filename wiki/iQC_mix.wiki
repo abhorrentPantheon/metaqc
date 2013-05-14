@@ -2,10 +2,55 @@
 
 = Introduction =
 
-Compounds in the iQC mix.
+Compounds that make up the iQC mix.
 
 
 = List of compounds =
 
-|| *Compound* || *Concentration* ||
-|| Alanine || ||
+|| *Compound* ||
+|| 13C Sorbitol (internal standard) ||
+|| 13C,15N-Valine (internal standard) ||
+|| Alanine ||
+|| alpha-Ketoglutaric acid ||
+|| Asparagine ||
+|| Aspartate ||
+|| Citrate ||
+|| Citric acid ||
+|| Cysteine ||
+|| Fructose ||
+|| Fructose-6-Phosphate ||
+|| Fucose ||
+|| Glucose ||
+|| Glucose-6-Phosphate ||
+|| Glutamate ||
+|| Glutamine ||
+|| Glycine ||
+|| Histidine ||
+|| Isocitrate ||
+|| Isocitric acid ||
+|| Isoleucine ||
+|| Lanosterol ||
+|| Leucine ||
+|| Lysine ||
+|| Maltotriose ||
+|| Mannitol ||
+|| Methionine ||
+|| Myoinositol ||
+|| Norleucine ||
+|| Ornithine ||
+|| Oxaloacetate ||
+|| Phenylalanine ||
+|| Proline ||
+|| Putrescine ||
+|| Pyroglutamate ||
+|| Pyruvate ||
+|| Ribitol ||
+|| Ribose ||
+|| Ribose-5-phosphate ||
+|| Serine ||
+|| Succinate ||
+|| Threonine ||
+|| Trehalose ||
+|| Tryptophan ||
+|| Tyrosine ||
+|| Valine ||

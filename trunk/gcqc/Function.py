@@ -1,4 +1,4 @@
-''' iQC.gcqc.Function.py
+''' metaqc.gcqc.Function.py
 '''
 
 # Requirements:
@@ -17,7 +17,7 @@ import time
 # TODO: Edit peak_top_ion_areas (don't forget def line) 
 # TODO: Insert get_int_of_ion function in pyms.Peak.Class
 sys.path.append('/x/PyMS/')
-sys.path.append('/x/iQC/')
+sys.path.append('/x/metaqc/')
 
 import matplotlib.pyplot as plt
 

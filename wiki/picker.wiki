@@ -10,8 +10,12 @@ This module manages the [gcqc] and [mailer] modules, calling them when necessary
   * Read in settings from configuration file
   * Check database for files that have been processed
   * Parse the file tree to list all .CDF files that are present
-  * Call the [gcqc] module for any unprocessed files
+  * Call the [gcqc] module for any unprocessed files (produces .tex report)
   * Either:
-    * update the database, or
-    * email the error log to the maintainer(s)
-  
+    * Update the database with compound information and .tex report location, or
+    * Email the error log to the maintainer(s)
+  * Check the database for .pdf reports
+  * All .tex reports that don't have a .pdf report associated with it are passed to [mailer]
+  * Either:
+    * Update the database with the .pdf report location, or
+    * Email the error log to the maintainer(s)

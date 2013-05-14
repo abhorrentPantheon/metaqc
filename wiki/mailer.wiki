@@ -11,6 +11,6 @@ This module creates and sends the email reports.
   * Report file scanned for test failures
   * Any failures are appended to the message body (if requested in config)
   * Placeholder text (such as current date) is formatted
-  * PDF report is attached
+  * PDF report is created (by `pdflatex`) and attached
   * Email sent to recipients
   * Clean up is peformed (removing log files, etc)

@@ -21,8 +21,15 @@ Once the PyMS installation has been validated, [http://code.google.com/p/metaqc/
 
 Edit the [Configuration configuration file] for `metaqc`, most notably changing the [Configuration#General instrument paths] and [Configuration#Mail_settings mail settings] values.
 
-At this point `metaqc` should be ready to run. You can either run it manually by issuing
-{{{
+At this point `metaqc` should be ready to run. You can either run it manually by issuing:
+  {{{
 python /x/metaqc/picker/proc.py 
-}}}
-or by setting up a cron job to run the same call on a regular basis.
+  }}}
+Alternatively, `metaqc` can be set up as a cron job to run the same call on a regular basis.
+
+= How `metaqc` works =
+
+There are three modules in `metaqc`:
+  * [gcqc] -- which does the bulk of the work
+  * [mailer] -- which sends the reports by email
+  * [picker] -- the module which determines if a file needs to be processed, and if necessary calls the other two modules to do the work.

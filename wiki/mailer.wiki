@@ -1,0 +1,16 @@
+#summary The mailer module of metaqc
+
+= Introduction =
+
+This module creates and sends the email reports.
+
+= Process =
+
+  * Mail settings are read from the configuration file.
+  * Presence of required files (logos, styles) verified.
+  * Report file scanned for test failures
+  * Any failures are appended to the message body (if requested in config)
+  * Placeholder text (such as current date) is formatted.
+  * PDF report is attached
+  * Email sent to recipients
+  * Clean up is peformed (removing log files, etc).

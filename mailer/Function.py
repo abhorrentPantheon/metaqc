@@ -1,4 +1,4 @@
-'''iQC.mailer.Function.py
+'''metaqc.mailer.Function.py
 '''
 
 import os

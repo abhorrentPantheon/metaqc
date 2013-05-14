@@ -1,4 +1,4 @@
-'''iQC.picker.proc.py
+'''metaqc.picker.proc.py
 '''
 ### Depending on sys, if libnetcdf error occurs, try this before running
 # export LD_LIBRARY_PATH=/usr/local/lib:/usr/lib
@@ -11,7 +11,7 @@ import sys
 import time
 
 sys.path.append('/x/PyMS/')
-sys.path.append('/x/iQC/')
+sys.path.append('/x/metaqc/')
 
 from mailer.Function import create_mail, send_mail
 from pylib.Function import config_reader, writedb2csv
@@ -19,7 +19,7 @@ from pylib.Function import config_reader, writedb2csv
 #
 #    Use the same config file for all
 #
-config_set = config_reader('/x/iQC/default.cfg')
+config_set = config_reader('/x/metaqc/default.cfg')
 # Get position numbers for section values
 g_ind = config_set[0]['general']
 m_ind = config_set[0]['mail']
@@ -48,8 +48,8 @@ server = mail_settings['server']
 
 # Other settings
 curr_dir = os.getcwd()
-mailer_dir = '/x/iQC/mailer/'
-qc_dir = '/x/iQC/gcqc/'
+mailer_dir = '/x/metaqc/mailer/'
+qc_dir = '/x/metaqc/gcqc/'
 
 ##############################################################################
 # pragma db_file:
@@ -135,8 +135,8 @@ if len(uncomp_set) != 0:
         # stat[7] is atime (access) - we want to use ctime (create) [9]
         time_diff = time.time() - os.stat(file_dct[f])[9]
         if time_diff >= (10*60):
-            run_call = [sys.executable, '/x/iQC/gcqc/proc.py', \
-                '-c', '/x/iQC/default.cfg', file_dct[f]]
+            run_call = [sys.executable, '/x/metaqc/gcqc/proc.py', \
+                '-c', '/x/metaqc/default.cfg', file_dct[f]]
             subprocess.call(run_call, stdout=open('./output_log.txt', 'wb'), \
                 stderr=open('./error_log.txt', 'wb'))
             
@@ -326,8 +326,8 @@ need_pdf = sorted(list(req_set.difference(done_set)))
 os.chdir(mailer_dir)
 if len(need_pdf) != 0:
     for f in need_pdf:
-        run_call = [sys.executable, '/x/iQC/mailer/proc.py', \
-            '-m', '-s', '-r', '-c', '/x/iQC/default.cfg', file_dct[f]] 
+        run_call = [sys.executable, '/x/metaqc/mailer/proc.py', \
+            '-m', '-s', '-r', '-c', '/x/metaqc/default.cfg', file_dct[f]] 
         subprocess.call(run_call, stdout=open('./output_log.txt', 'wb'), \
             stderr=open('./error_log.txt', 'wb'))
         
@@ -407,16 +407,21 @@ if len(need_pdf) != 0:
 
 # Update the copy of the database
 db_path = os.path.split(db_file)[0]
-db_copy = os.path.join(db_path, 'iQC_gcqc_copy.db')
+db_copy = os.path.join(db_path, 'metaqc_gcqc_copy.db')
 shutil.copy2(db_file, db_copy)
 # Read and execute only on file (except owner - need to be able to update!)
 os.chmod(db_copy, 0755)
 # Write out backup .csv files
-writedb2csv(db_file, '../iQC_dbexport')
-# TODO: Copy files to ma server
-shutil.copy2('../iQC_dbexport_files.csv', '/mnt/ma_server/Shared_Data/Projects/Metabolomics Australia/GC-MS QC Method development/iQC_dbexport_files.csv')
-shutil.copy2('../iQC_dbexport_data.csv', '/mnt/ma_server/Shared_Data/Projects/Metabolomics Australia/GC-MS QC Method development/iQC_dbexport_data.csv')
-shutil.copy2('../iQC_dbexport_report.csv', '/mnt/ma_server/Shared_Data/Projects/Metabolomics Australia/GC-MS QC Method development/iQC_dbexport_report.csv')
+writedb2csv(db_file, '../metaqc_dbexport')
+# Bio21
+#shutil.copy2('../metaqc_dbexport_files.csv', '/mnt/ma_server/Shared_Data/Projects/Metabolomics Australia/GC-MS QC Method development/metaqc_dbexport_files.csv')
+#shutil.copy2('../metaqc_dbexport_data.csv', '/mnt/ma_server/Shared_Data/Projects/Metabolomics Australia/GC-MS QC Method development/metaqc_dbexport_data.csv')
+#shutil.copy2('../metaqc_dbexport_report.csv', '/mnt/ma_server/Shared_Data/Projects/Metabolomics Australia/GC-MS QC Method development/metaqc_dbexport_report.csv')
+# Botany
+shutil.copy2('../metaqc_dbexport_files.csv', '/media/sf_main/groups/Metabolomics/QC REPORTS/metaqc_dbexport_files.csv')
+shutil.copy2('../metaqc_dbexport_data.csv', '/media/sf_main/groups/Metabolomics/QC REPORTS/metaqc_dbexport_data.csv')
+shutil.copy2('../metaqc_dbexport_report.csv', '/media/sf_main/groups/Metabolomics/QC REPORTS/metaqc_dbexport_report.csv')
+
 
 os.chdir(curr_dir)
 # EOF

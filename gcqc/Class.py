@@ -1,4 +1,4 @@
-''' GCQC.gcqc.Class.py
+''' metaqc.gcqc.Class.py
 '''
 class Compound(object):
     '''

@@ -1,4 +1,4 @@
-'''iQC.mailer.proc.py
+'''metaqc.mailer.proc.py
 '''
 
 import glob
@@ -10,7 +10,7 @@ import sys
 
 from time import strftime
 
-sys.path.append('/x/iQC/')
+sys.path.append('/x/metaqc/')
 # From module containing generic stuff that can be recycled
 from pylib.Function import config_reader
 from mailer.Function import create_mail, send_mail
@@ -92,7 +92,7 @@ if options.config_file != None:
 else:
 # Specify options for default settings
     config_vals = {}
-    config_vals['report_folder'] = '/x/iQC/reports'
+    config_vals['report_folder'] = '/x/metaqc/reports'
     mail_settings = {}
     mail_settings['sender'] = 'qc_reports@unimelb.edu.au'
     mail_settings['recipients'] = 'jairus.bowne@gmail.com'

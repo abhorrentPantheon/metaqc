@@ -1,4 +1,4 @@
-''' iQC.gcqc.proc.py
+''' metaqc.gcqc.proc.py
 '''
 
 import os
@@ -7,7 +7,7 @@ import sys
 import time
 
 sys.path.append('/x/PyMS/')
-sys.path.append('/x/iQC/')
+sys.path.append('/x/metaqc/')
 
 # From common_functions
 from pylib.Function import config_reader
@@ -102,8 +102,8 @@ parser.add_option('-c', '--config', nargs=1, action='store',
 ##    'datafiles/botany_7/201211C_DD_QC5 CHECKROBIN_MA7C.CDF'])
 ## Or use the defaults and let it pick the methods based on .cdf file
 ## (must specify database and .cdf at a minimum)
-#    '-d', '/x/iQC/iQC.db',
-#    '-c', '/x/iQC/default.cfg', 
+#    '-d', '/x/metaqc/metaqc_gcqc.db',
+#    '-c', '/x/metaqc/default.cfg', 
 #    ### Test using a blank file (all fail)
 #    'datafiles/tmp/reagent_148-16508.CDF' ])
 #    ### Test using a real file

@@ -1,4 +1,4 @@
-'''iQC.pylib.Function.py
+'''metaqc.pylib.Function.py
 '''
 
 import ConfigParser
@@ -114,7 +114,7 @@ def writedb2csv(db_file, csv_basename):
         The name of the output files will be '<csv_file>_files.csv' and 
         '<csv_basename>_data.csv'.
     
-    @param db_file:    iQC database filename
+    @param db_file:    metaqc database filename
     @type db_file:    StringType
     
     @param csv_basename:    Output .csv file base name

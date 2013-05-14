@@ -1,0 +1,34 @@
+#How to configure the metaqc tool
+
+= Introduction =
+
+`metaqc` has a configuration file called `default.cfg`. This file has a number of entries which enable the user to set a number of options, including who receives the `metaqc` reports and where the QC files themselves are located.
+
+The entries in the file are specified as `name = value`. Multiple values can be specified by leaving blank space at the beginning of the next line, i.e.
+{{{
+name =
+    value1
+    value2
+}}}
+This is particularly useful for the instrument paths, and will allow multiple instruments to be monitored by the `metaqc` tool.
+= Sections =
+
+== General settings ==
+|| *Field* || * Description* ||
+|| *target_filename* || The name of a .csv file with a list of compounds, their retention time and quantifying ion. ||
+|| *db_file* || The database file to use. ||
+|| *report_folder* || Where to store the reports. ||
+|| *instr_data_folders* || The full path to the folder on which is stored the netCDF data files. ||
+|| *mail_on_fail* || Which tests to explicitly inform the operator of in case of failure. These failures will be listed in the body of the email that is sent as well as on the report that is generated. ||
+
+== Test names ==
+The names of each of the tests as they will be written in the report.
+== Pass/Fail Values ==
+Pass and Fail values for each of the tests that are performed. When a test value falls between the pass and fail values, it will be labelled with 'Watch' in the report.
+== Mail settings ==
+|| *sender* || The address that the report email is sent from, e.g. qc_reports@localdomain.tld.cc ||
+|| *maintainer* || The address of the person who will maintain the codebase on your installation. They will be sent mail whenever the `metaqc` tool fails to produce a report. ||
+|| *recipients* || A comma-separated list of operators who will receive the reports. ||
+|| *server* || The mail server through which the reports will be sent. Often of the form smtp.localdomain.tld.cc ||
+|| *subject* || Subject line of the email. ||
+|| *msg_body* || The basic contents of the email itself. ||

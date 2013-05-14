@@ -7,8 +7,22 @@ metaqc offers a method for tracking the performance of Gas Chromatography-Mass S
 
 = Requirements =
 
-  * *PyMS* -- Peak identification, integration
+  * *[http://code.google.com/p/pyms PyMS]* -- Peak identification, integration
   * *pdf2latex* -- Report creation
   * *sqlite3* -- Database management
 
 _Note that PyMS has its own dependencies, and as such these are inherited by metaqc._
+
+= How to use `metaqc` =
+
+The first step to creating a local installation of this tool is to install [http://code.google.com/p/pyms PyMS] into the `/x/` folder on the machine. 
+
+Once the PyMS installation has been validated, [http://code.google.com/p/metaqc/source/checkout checkout] this project into the same `/x/` folder, which will create the `metaqc` project folder.
+
+Edit the [Configuration configuration file] for `metaqc`, most notably changing the [Configuration#General instrument paths] and [Configuration#Mail_settings mail settings] values.
+
+At this point `metaqc` should be ready to run. You can either run it manually by issuing
+{{{
+python /x/metaqc/picker/proc.py 
+}}}
+or by setting up a cron job to run the same call on a regular basis.

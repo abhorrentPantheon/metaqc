@@ -1,0 +1,5 @@
+#summary The gcqc module of metaqc
+
+= Introduction =
+
+This is the module which does the bulk of the processing, including reading the .CDF input file, finding compounds and determining their area and intensity and generating the .tex report files.

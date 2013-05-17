@@ -8,6 +8,7 @@ metaqc offers a method for tracking the performance of Gas Chromatography-Mass S
 
 = Requirements =
 
+  * GNU/Linux based operating system
   * *[http://code.google.com/p/pyms PyMS]* -- Peak identification, integration
   * *pdf2latex* -- Report creation
   * *sqlite3* -- Database management

@@ -3,3 +3,37 @@
 = Introduction =
 
 This is the module which does the bulk of the processing, including reading the .CDF input file, finding compounds and determining their area and intensity and generating the .tex report files.
+
+= Process = 
+  * Settings read from configuration file:
+    * List of target compounds, if specified
+    * Method file used, if specified
+    * Database name
+    * Report folder location
+    * Report labels for each test, as stated on report
+    * Pass/fail thresholds
+  * Determined the instrument name from the file path
+    * This will need to be edited for your instrument(s)
+  * Determine method file used from length of run unless specified by configuration file
+    * Different methods will change the retention times of the compounds
+  * Create a target compound list
+  * Use [http://code.google.com/p/pyms PyMS] to generate a peak list (all peaks in the chromatogram)
+    * If there are no peaks, a report will be produced showing the Total Ion Chromatogram. The [Configuration/Mail_settings maintainer] will also be notified of the error.
+  * Determine peak symmetry across all peaks in the peak list
+    * Number of scans from the left boundary of the peak to the peak apex / number of scans from the apex to the right boundary
+  * For each compound:
+    * Check all peaks within a 20-second window for maximal intensity of the ion used for quantitation, and record the area and intensity for that ion
+    * Calculate the difference between the expected and actual retention times
+    * Calculate the symmetry of the selected peak
+  * Update the database with the area, intensity, symmetry and retention time shift for all compounds
+  * Perform the tests
+    * Retention time lock
+    * Inlet Condition
+      * Ribitol intensity: Tuning of instrument and leaks
+      * Putrescine/ribitol ratio, ribose intensity, glutamate/ribose ratio: Condition of inlet liner
+    * Column Condition
+      * Asparagine/ribose ratio: Condition of inlet liner and seals
+      * Alanine intensity, alanine/valine ratio: Start of column
+      * Maltotriose intensity: End of column
+    * Symmetry
+      * Across all peaks as well as across those in the compound list

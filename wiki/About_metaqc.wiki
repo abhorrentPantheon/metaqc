@@ -1,4 +1,5 @@
 #summary About page for metaqc
+#labels Featured
 
 = Introduction =
 

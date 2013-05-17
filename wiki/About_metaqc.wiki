@@ -23,7 +23,7 @@ Once the PyMS installation has been validated, [http://code.google.com/p/metaqc/
 
 Edit the [Configuration configuration file] for `metaqc`, most notably changing the [Configuration#General instrument paths] and [Configuration#Mail_settings mail settings] values.
 
-At this point `metaqc` should be ready to run. You can either run it manually by issuing:
+At this point `metaqc` should be ready to run. You can run it by issuing:
   {{{
 python /x/metaqc/picker/proc.py 
   }}}

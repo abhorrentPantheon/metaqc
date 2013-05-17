@@ -37,3 +37,5 @@ This is the module which does the bulk of the processing, including reading the 
       * Maltotriose intensity: End of column
     * Symmetry
       * Across all peaks as well as across those in the compound list
+  * Generate images for report (inlet and column condition tests)
+  * Create .tex report

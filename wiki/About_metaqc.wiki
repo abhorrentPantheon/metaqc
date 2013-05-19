@@ -35,3 +35,7 @@ There are three modules in `metaqc`:
   * [gcqc] -- which does the bulk of the work
   * [mailer] -- which sends the reports by email
   * [picker] -- the module which determines if a file needs to be processed, and if necessary calls the other two modules to do the work.
+
+These three modules each read configuration settings from the [database database file].
+
+The picker module selects which file(s) needs to be processed, and calls the gcqc module to process the file(s). Once the file has been processed, the picker module calls the mailer module to convert the report to a .pdf document and emails the .pdf to the instrument operators.

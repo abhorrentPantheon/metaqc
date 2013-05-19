@@ -1,0 +1,68 @@
+#summary Details of the metaqc database file.
+
+= Introduction =
+
+The metaqc database stores all the information used to create the reports. It also stores information regarding all the compounds present in the [iQC_mix iQC mix], allowing for expansion of the reports in future.
+
+
+= Structure of the database =
+
+There are six tables in the database:
+  * qc_files
+  * qc_data
+  * qc_testID
+  * qc_results
+  * qc_reports
+  * pdf_loc
+
+== Structure of tables == 
+*qc_files*
+|| fkey || integer || Unique row identifier ||
+|| file_name || varchar || File name of the .cdf file ||
+|| method_file || varchar || Method file used for that file ||
+|| instr_name || varchar || The name of the instrument used ||
+|| expr_date || datetime || Time stamp (run date) of the file ||
+
+*qc_data*
+|| file_name || varchar || As for qc_files ||
+|| expr_date || varchar || As for qc_files ||
+|| compound || varchar || Compound name ||
+|| area || real || Area value ||
+|| intensity || real || Intensity value ||
+|| RT || real || Retention time (found) ||
+|| RTdelta || real || Retention time shift vs expected ||
+|| symmetry || real || Symmetry score ||
+
+*qc_testID*
+|| test_number || Test identifier (test1, test2 etc) ||
+|| test_label || Short (internal) name of test ||
+
+*qc_results*
+|| file_name || varchar || As for qc_files ||
+|| test1r1 || real ||  Numeric value of retention time lock test ||
+|| test1r2 || varchar || Pass/Watch/Fail ||
+|| test2r1 || real || Numeric value of ribitol intensity test ||
+|| test2r2 || varchar || Pass/Watch/Fail ||
+|| test3r1 || real || Numeric value of putrescine/ribitol ratio test ||
+|| test3r2 || varchar || Pass/Watch/Fail ||
+|| test4r1 || real || Numeric value of ribose intensity test ||
+|| test4r2 || varchar || Pass/Watch/Fail ||
+|| test5r1 || real || Numeric value of glutamate/ribose ratio test ||
+|| test5r2 || varchar || Pass/Watch/Fail ||
+|| test6r1 || real || Numeric value of aparagine/ribose ratio test ||
+|| test6r2 || varchar || Pass/Watch/Fail ||
+|| test7r1 || real || Numeric value of alanine intensity test ||
+|| test7r2 || varchar || Pass/Watch/Fail ||
+|| test8r1 || real || Numeric value of alanine/valine ratio test ||
+|| test8r2 || varchar || Pass/Watch/Fail ||
+|| test9r1 || real || Numeric value of maltotriose intensity test ||
+|| test9r2 || varchar || Pass/Watch/Fail ||
+
+*qc_reports*
+|| file_name || varchar || As for qc_files ||
+|| data_folder || varchar || Location of the .cdf file (directory path only) ||
+|| rep_loc || varchar || Full path to .tex report file ||
+
+*pdf_info*
+|| file_name || varchar || As for qc_files ||
+|| pdf_loc || varchar || Full path to .pdf report file ||

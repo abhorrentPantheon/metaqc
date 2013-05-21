@@ -39,3 +39,5 @@ There are three modules in `metaqc`:
 These three modules each read configuration settings from the [database database file].
 
 The picker module selects which file(s) needs to be processed, and calls the gcqc module to process the file(s). Once the file has been processed, the picker module calls the mailer module to convert the report to a .pdf document and emails the .pdf to the instrument operators.
+
+For more detailed information, see the presentation featured on the project's homepage, [http://code.google.com/p/metaqc/downloads/detail?name=metaqc_overview.odp metaqc_overview.odp].

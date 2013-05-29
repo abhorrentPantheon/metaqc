@@ -111,7 +111,8 @@ parser.add_option('-c', '--config', nargs=1, action='store',
 ##    To use actual command line options (normal use):
 (options, args) = parser.parse_args()
 #==========================================================================
-
+#(options, args) = parser.parse_args( ['-d', 'test.db', '-c', 'default.cfg', '/tmp/iqc_101-5469.CDF'])
+#instr_name = 'GC01'
 # TODO: modify for optparse/argparse
 # Check that an argument (.cdf file name) was provided
 ### NB: andi_file must be specified as full path (it is by picker)
@@ -633,36 +634,51 @@ for cpd in cpd_list:
         cpd_sym.append('NA')
 #==========================================================================
 
-#
-#     Append values to database for this file
-#
-print ' -> Updating qc database...'
-qc_db_update(cpd_list, db_file, andi_file, instr_name, report_date)
-
-#
-#    Create images for report (test histories)
-#
-if method_temp in [7, 15, 25]:
-    print ' -> Generating test history plots...'
-    db_plotter(db_file, report_vals, os.path.basename(andi_file), \
-        instr_name, report_folder)
-elif method_temp == 'TBS':
-    # TODO: Create db_plotter_tbs
-#    db_plotter_tbs(db_file, report_vals, os.path.basename(andi_file), \
-#        instr_name, report_folder)
-    pass
+##
+##    Create images for report (test histories)
+##
+#if method_temp in [7, 15, 25]:
+#    print ' -> Generating test history plots...'
+#    db_plotter(db_file, report_vals, os.path.basename(andi_file), \
+#        method_filename, instr_name, report_folder)
+#elif method_temp == 'TBS':
+#    # TODO: Create db_plotter_tbs
+##    db_plotter_tbs(db_file, report_vals, os.path.basename(andi_file), \
+##        instr_name, report_folder)
+#    pass
 
 #
 #    Perform tests
 #
 if method_temp in [7, 15, 25]:
     #
-    #    Generate the report for this run
+    #    Generate information for the report
     #
     # TODO: Check if this should be in report gen or here (here?)
     print ' -> Performing tests...'
-    (test_report, watch_points, maint_reqs) = report_gen(\
+    (test_results, test_report, watch_points, maint_reqs) = report_gen(\
         cpd_list, config_vals, report_vals, report_folder)
+    
+    #
+    #     Append values to database for this file
+    #
+    print ' -> Updating qc database...'
+    qc_db_update(cpd_list, db_file, andi_file, instr_name, report_date, \
+        report_labels, test_results)
+    
+    #
+    #    Create images for report (test histories)
+    #
+    if method_temp in [7, 15, 25]:
+        print ' -> Generating test history plots...'
+        db_plotter(db_file, report_vals, os.path.basename(andi_file), \
+            method_filename, instr_name, report_folder)
+    elif method_temp == 'TBS':
+        # TODO: Create db_plotter_tbs
+    #    db_plotter_tbs(db_file, report_vals, os.path.basename(andi_file), \
+    #        instr_name, report_folder)
+        pass
+    
     symm_report = symm_test(all_sym, cpd_sym)
     params = []
     params.append(''.join(['GC-MS data file', ' & ', '\ldots'*5, ' & \\verb|',\
@@ -723,6 +739,7 @@ elif method_temp == 'TBS':
 #    (test_report, watch_points, maint_reqs) = report_gen_tbs(\
 #        cpd_list, config_vals, report_vals, report_folder).
     qc_report_tbs(andi_file, report_folder, timecode=report_date)
+
 
 print ' -> Done! Exiting.'
 

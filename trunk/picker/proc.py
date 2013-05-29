@@ -414,13 +414,13 @@ os.chmod(db_copy, 0755)
 # Write out backup .csv files
 writedb2csv(db_file, '../metaqc_dbexport')
 # Bio21
-#shutil.copy2('../metaqc_dbexport_files.csv', '/mnt/ma_server/Shared_Data/Projects/Metabolomics Australia/GC-MS QC Method development/metaqc_dbexport_files.csv')
-#shutil.copy2('../metaqc_dbexport_data.csv', '/mnt/ma_server/Shared_Data/Projects/Metabolomics Australia/GC-MS QC Method development/metaqc_dbexport_data.csv')
-#shutil.copy2('../metaqc_dbexport_report.csv', '/mnt/ma_server/Shared_Data/Projects/Metabolomics Australia/GC-MS QC Method development/metaqc_dbexport_report.csv')
+shutil.copy2('../metaqc_dbexport_files.csv', '/mnt/ma_srv/Shared_Data/Projects/Metabolomics Australia/GC-MS QC Method development/metaqc_dbexport_files.csv')
+shutil.copy2('../metaqc_dbexport_data.csv', '/mnt/ma_srv/Shared_Data/Projects/Metabolomics Australia/GC-MS QC Method development/metaqc_dbexport_data.csv')
+shutil.copy2('../metaqc_dbexport_report.csv', '/mnt/ma_srv/Shared_Data/Projects/Metabolomics Australia/GC-MS QC Method development/metaqc_dbexport_report.csv')
 # Botany
-shutil.copy2('../metaqc_dbexport_files.csv', '/media/sf_main/groups/Metabolomics/QC REPORTS/metaqc_dbexport_files.csv')
-shutil.copy2('../metaqc_dbexport_data.csv', '/media/sf_main/groups/Metabolomics/QC REPORTS/metaqc_dbexport_data.csv')
-shutil.copy2('../metaqc_dbexport_report.csv', '/media/sf_main/groups/Metabolomics/QC REPORTS/metaqc_dbexport_report.csv')
+#shutil.copy2('../metaqc_dbexport_files.csv', '/media/sf_main/groups/Metabolomics/QC REPORTS/metaqc_dbexport_files.csv')
+#shutil.copy2('../metaqc_dbexport_data.csv', '/media/sf_main/groups/Metabolomics/QC REPORTS/metaqc_dbexport_data.csv')
+#shutil.copy2('../metaqc_dbexport_report.csv', '/media/sf_main/groups/Metabolomics/QC REPORTS/metaqc_dbexport_report.csv')
 
 
 os.chdir(curr_dir)

@@ -842,26 +842,25 @@ def db_plotter(db_file, report_vals, filename, method_name, instr_name, \
     conn = sqlite3.connect(db_file)
     cur = conn.cursor()
     
-    # Get last (8) results from db file 
-    raw_fetch = cur.execute(''.join([ \
-    ### Old method, prior to results table being in database
-    #    'select file_name, compound, area, intensity from qc_data where ', \
-    #    'file_name in (', \
-    #        'select file_name from qc_files where instr_name = "', \
-    #        instr_name, \
-    #        '" order by expr_date desc limit 8', \
-    #    ') order by expr_date asc'])).fetchall()
-        'select * from qc_results where file_name in (', \
-            'select file_name from qc_files where instr_name = "', \
-            instr_name, '" and method_file = "', method_name, \
-            '" order by expr_date desc limit 8', \
-        ')'])).fetchall()
-    
+    try:
+        # Get last (8) results from db file 
+        raw_fetch = cur.execute(''.join([ \
+        ### Old method, prior to results table being in database
+        #    'select file_name, compound, area, intensity from qc_data where ', \
+        #    'file_name in (', \
+        #        'select file_name from qc_files where instr_name = "', \
+        #        instr_name, \
+        #        '" order by expr_date desc limit 8', \
+        #    ') order by expr_date asc'])).fetchall()
+            'select * from qc_results where file_name in (', \
+                'select file_name from qc_files where instr_name = "', \
+                instr_name, '" and method_file = "', method_name, \
+                '" order by expr_date desc limit 8', \
+            ')'])).fetchall()
+    except sqlite3.OperationalError:
+        raw_fetch = []
     cur.close()
     conn.close()
-    
-    # This now has 8 entries, the most recent being first. Reverse this:
-    raw_fetch.reverse()
     
     # Tidy up the output
     clean_fetch = []

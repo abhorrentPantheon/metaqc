@@ -1097,11 +1097,11 @@ def report_gen(cpd_list, config_vals, report_vals, report_folder):
             watch_points.append(\
                 'Syringe and inlet liner may need maintenance soon (2)')
         else:
-            gr_val = 0.0
             gr_r = '\\textbf{FAIL}'
             maint_reqs.append(\
                 'Clean syringe, replace inlet liner and bake oven (2)')
     except ZeroDivisionError:
+        gr_val = 0.0
         gr_r = '\\textbf{FAIL}'
         maint_reqs.append(\
             'Clean syringe, replace inlet liner and bake oven (2)')

@@ -111,8 +111,7 @@ parser.add_option('-c', '--config', nargs=1, action='store',
 ##    To use actual command line options (normal use):
 (options, args) = parser.parse_args()
 #==========================================================================
-#(options, args) = parser.parse_args( ['-d', 'test.db', '-c', 'default.cfg', '/tmp/iqc_101-5469.CDF'])
-#instr_name = 'GC01'
+#
 # TODO: modify for optparse/argparse
 # Check that an argument (.cdf file name) was provided
 ### NB: andi_file must be specified as full path (it is by picker)
@@ -633,19 +632,6 @@ for cpd in cpd_list:
         cpd.set_symmetry('NA')
         cpd_sym.append('NA')
 #==========================================================================
-
-##
-##    Create images for report (test histories)
-##
-#if method_temp in [7, 15, 25]:
-#    print ' -> Generating test history plots...'
-#    db_plotter(db_file, report_vals, os.path.basename(andi_file), \
-#        method_filename, instr_name, report_folder)
-#elif method_temp == 'TBS':
-#    # TODO: Create db_plotter_tbs
-##    db_plotter_tbs(db_file, report_vals, os.path.basename(andi_file), \
-##        instr_name, report_folder)
-#    pass
 
 #
 #    Perform tests

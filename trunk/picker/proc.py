@@ -35,6 +35,7 @@ report_folder = config_vals['report_folder']
 
 # Database file
 db_file = config_vals['db_file']
+db_updated = False
 
 #
 #    Email settings
@@ -131,10 +132,10 @@ uncomp_files = sorted(list(uncomp_set))
 os.chdir(qc_dir)
 if len(uncomp_set) != 0:
     for f in uncomp_files:
-        # If file is > 10min old, process (to ensure no access issues)
+        # If file is > 5min old, process (to ensure no access issues)
         # stat[7] is atime (access) - we want to use ctime (create) [9]
         time_diff = time.time() - os.stat(file_dct[f])[9]
-        if time_diff >= (10*60):
+        if time_diff >= (5*60):
             run_call = [sys.executable, '/x/metaqc/gcqc/proc.py', \
                 '-c', '/x/metaqc/default.cfg', file_dct[f]]
             subprocess.call(run_call, stdout=open('./output_log.txt', 'wb'), \
@@ -187,6 +188,9 @@ if len(uncomp_set) != 0:
                 conn.commit()
                 cur.close()
                 conn.close()
+                
+                # Update .csv files later
+                db_updated = True
                 
             # If there was an error, mail it to the maintainer
             else:
@@ -405,23 +409,23 @@ if len(need_pdf) != 0:
         for frm in rmf:
             os.remove(frm)
 
-# Update the copy of the database
-db_path = os.path.split(db_file)[0]
-db_copy = os.path.join(db_path, 'metaqc_gcqc_copy.db')
-shutil.copy2(db_file, db_copy)
-# Read and execute only on file (except owner - need to be able to update!)
-os.chmod(db_copy, 0755)
-# Write out backup .csv files
-writedb2csv(db_file, '../metaqc_dbexport')
-# Bio21
-shutil.copy2('../metaqc_dbexport_files.csv', '/mnt/ma_srv/Shared_Data/Projects/Metabolomics Australia/GC-MS QC Method development/metaqc_dbexport_files.csv')
-shutil.copy2('../metaqc_dbexport_data.csv', '/mnt/ma_srv/Shared_Data/Projects/Metabolomics Australia/GC-MS QC Method development/metaqc_dbexport_data.csv')
-shutil.copy2('../metaqc_dbexport_report.csv', '/mnt/ma_srv/Shared_Data/Projects/Metabolomics Australia/GC-MS QC Method development/metaqc_dbexport_report.csv')
-# Botany
-#shutil.copy2('../metaqc_dbexport_files.csv', '/media/sf_main/groups/Metabolomics/QC REPORTS/metaqc_dbexport_files.csv')
-#shutil.copy2('../metaqc_dbexport_data.csv', '/media/sf_main/groups/Metabolomics/QC REPORTS/metaqc_dbexport_data.csv')
-#shutil.copy2('../metaqc_dbexport_report.csv', '/media/sf_main/groups/Metabolomics/QC REPORTS/metaqc_dbexport_report.csv')
-
+if db_updated == True:
+    # Update the copy of the database
+    db_path = os.path.split(db_file)[0]
+    db_copy = os.path.join(db_path, 'metaqc_gcqc_copy.db')
+    shutil.copy2(db_file, db_copy)
+    # Read and execute only on file (except owner - need to be able to update!)
+    os.chmod(db_copy, 0755)
+    # Write out backup .csv files
+    writedb2csv(db_file, '../metaqc_dbexport')
+    # Bio21
+    #shutil.copy2('../metaqc_dbexport_files.csv', '/mnt/ma_server/Shared_Data/Projects/Metabolomics Australia/GC-MS QC Method development/metaqc_dbexport_files.csv')
+    #shutil.copy2('../metaqc_dbexport_data.csv', '/mnt/ma_server/Shared_Data/Projects/Metabolomics Australia/GC-MS QC Method development/metaqc_dbexport_data.csv')
+    #shutil.copy2('../metaqc_dbexport_report.csv', '/mnt/ma_server/Shared_Data/Projects/Metabolomics Australia/GC-MS QC Method development/metaqc_dbexport_report.csv')
+    # Botany
+    shutil.copy2('../metaqc_dbexport_files.csv', '/media/sf_main/groups/Metabolomics/QC REPORTS/metaqc_dbexport_files.csv')
+    shutil.copy2('../metaqc_dbexport_data.csv', '/media/sf_main/groups/Metabolomics/QC REPORTS/metaqc_dbexport_data.csv')
+    shutil.copy2('../metaqc_dbexport_report.csv', '/media/sf_main/groups/Metabolomics/QC REPORTS/metaqc_dbexport_report.csv')
 
 os.chdir(curr_dir)
 # EOF
